@@ -14,8 +14,8 @@ from .models import Question
 
 def detail(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
-    return HttpResponse(question.question_text)
-
+    context = {"question": question}
+    return render(request, "polls/detail.html", context)
 
 def results(request, question_id):
     response = "You're looking at the results of question %s."
