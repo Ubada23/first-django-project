@@ -10,7 +10,8 @@ def index(request):
 
 
 def detail(request, question_id):
-    return HttpResponse("You're looking at question %s." % question_id)
+    question = Question.objects.get(pk=question_id)
+    return HttpResponse(question.question_text)
 
 
 def results(request, question_id):
