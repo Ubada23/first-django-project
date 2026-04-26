@@ -8,9 +8,12 @@ from django.http import HttpResponse
 def index(request):
     return HttpResponse("Hello, world. You're at the polls index.")
 
+from django.shortcuts import render, get_object_or_404
+from .models import Question
+
 
 def detail(request, question_id):
-    question = Question.objects.get(pk=question_id)
+    question = get_object_or_404(Question, pk=question_id)
     return HttpResponse(question.question_text)
 
 
